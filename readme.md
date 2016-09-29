@@ -26,7 +26,7 @@ requires Ruby and Ruby Gems.
 ```
 $ git clone https://github.com/citruspi/Spotify-Notifications.git
 $ cd Spotify-Notifications
-$ git submodule foreach git pull
+$ git submodule update --init --recursive
 $ pod install
 $ open Spotify Notifications.xcworkspace
 ```
