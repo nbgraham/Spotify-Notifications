@@ -9,6 +9,7 @@
 import Cocoa
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 struct Track {
     var title: String? = nil
@@ -23,40 +24,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var track = Track()
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "playbackStateChanged:", name: "com.spotify.client.PlaybackStateChanged", object: nil)
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(playbackStateChanged(_:)), name: NSNotification.Name(rawValue: "com.spotify.client.PlaybackStateChanged"), object: nil)
     }
     
-    func playbackStateChanged(aNotification: NSNotification) {
-        let information : [NSObject : AnyObject] = aNotification.userInfo!
-        let playbackState : String = information["Player State"] as NSString
+    func playbackStateChanged(_ aNotification: Notification) {
+        let information : [AnyHashable: Any] = (aNotification as NSNotification).userInfo!
+        let playbackState : String = (information["Player State"] as! NSString) as String
         
         if playbackState == "Playing" {
-            track.title = information["Name"] as NSString
-            track.artist = information["Artist"] as NSString
-            track.album = information["Album"] as NSString
-            track.id = information["Track ID"] as NSString
+            track.title = (information["Name"] as! NSString) as String
+            track.artist = (information["Artist"] as! NSString) as String
+            track.album = (information["Album"] as! NSString) as String
+            track.id = (information["Track ID"] as! NSString) as String
 
             if fetchPreference("embedAlbumArtwork") == 0 {
                 let apiUri = "https://embed.spotify.com/oembed/?url=" + track.id!
             
-                Alamofire.request(.GET, apiUri, parameters: nil)
-                    .responseJSON { (req, res, json, error) in
-                        if(error != nil) {
-                            NSLog("Error: \(error)")
-                        }
-                        else {
-                            var json = JSON(json!)
+                Alamofire.request(apiUri, method: .get).responseJSON { response in
+                    
+                    if let json = response.result.value {
                         
-                            let artworkLocation: NSURL = NSURL(string: json["thumbnail_url"].stringValue)!
+                        var json = JSON(json)
                         
-                            let artwork = NSImage(contentsOfURL: artworkLocation)
-                            self.track.artwork = artwork
-                        }
+                        let artworkLocation = URL(string: json["thumbnail_url"].stringValue)!
+                        
+                        let artwork = NSImage(contentsOf: artworkLocation)
+                        self.track.artwork = artwork
+                        
+                    } else {
+                        NSLog("Error: \(response)")
+                    }
                 }
             }
 
-            var frontmostApplication : NSRunningApplication? = NSWorkspace.sharedWorkspace().frontmostApplication
+            let frontmostApplication : NSRunningApplication? = NSWorkspace.shared().frontmostApplication
 
             if frontmostApplication != nil {
                 if frontmostApplication?.bundleIdentifier == "com.spotify.client" {
@@ -71,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func presentNotification() {
-        var notification:NSUserNotification = NSUserNotification()
+        let notification:NSUserNotification = NSUserNotification()
         
         notification.title = track.title
         notification.subtitle = track.album
@@ -85,18 +87,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             notification.soundName = NSUserNotificationDefaultSoundName
         }
 
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
     }
     
-    func fetchPreference(key: String, fallback: Int = 0) -> Int {
-        if let preference: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(key) {
-            return preference as Int
+    func fetchPreference(_ key: String, fallback: Int = 0) -> Int {
+        if let preference: AnyObject = UserDefaults.standard.object(forKey: key) as AnyObject? {
+            return preference as! Int
         } else {
             return fallback
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 

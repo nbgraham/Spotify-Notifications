@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import NSBundle_LoginItem
 
 class ViewController: NSViewController {
 
@@ -30,45 +31,45 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        notificationSoundButton.selectItemAtIndex(fetchPreference("playSoundOnNotification"))
-        embedAlbumArtworkButton.selectItemAtIndex(fetchPreference("embedAlbumArtwork"))
-        spotifyHasFocusButton.selectItemAtIndex(fetchPreference("disableWhenSpotifyHasFocus"))
+        notificationSoundButton.selectItem(at: fetchPreference("playSoundOnNotification"))
+        embedAlbumArtworkButton.selectItem(at: fetchPreference("embedAlbumArtwork"))
+        spotifyHasFocusButton.selectItem(at: fetchPreference("disableWhenSpotifyHasFocus"))
         
-        if NSBundle.mainBundle().isLoginItemEnabled() {
-            launchOnLoginButton.selectItemAtIndex(0)
+        if Bundle.main.isLoginItemEnabled() {
+            launchOnLoginButton.selectItem(at: 0)
         } else {
-            launchOnLoginButton.selectItemAtIndex(1)
+            launchOnLoginButton.selectItem(at: 1)
         }
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
 
-    @IBAction func PreferenceSet(sender: NSPopUpButton) {
-        var identifier : String = sender.identifier
+    @IBAction func PreferenceSet(_ sender: NSPopUpButton) {
+        let identifier : String = sender.identifier!
         
         if identifier == "launchOnLogin" {
             if sender.indexOfSelectedItem == 0 {
-                NSBundle.mainBundle().enableLoginItem()
+                Bundle.main.enableLoginItem()
             } else {
-                NSBundle.mainBundle().disableLoginItem()
+                Bundle.main.disableLoginItem()
             }
         } else {
             setPreference(identifier, value: sender.indexOfSelectedItem)
         }
     }
 
-    func setPreference(key: String, value: Int) {
-        NSUserDefaults.standardUserDefaults().setInteger(value, forKey: key)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func setPreference(_ key: String, value: Int) {
+        UserDefaults.standard.set(value, forKey: key)
+        UserDefaults.standard.synchronize()
     }
 
-    func fetchPreference(key: String, fallback: Int = 0) -> Int {
-        if let preference: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(key) {
-            return preference as Int
+    func fetchPreference(_ key: String, fallback: Int = 0) -> Int {
+        if let preference: AnyObject = UserDefaults.standard.object(forKey: key) as AnyObject? {
+            return preference as! Int
         } else {
             return fallback
         }
