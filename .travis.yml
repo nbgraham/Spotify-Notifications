@@ -1,4 +1,8 @@
 language: swift
 xcode_project: Spotify Notifications.xcodeproj
 xcode_scheme: Spotify Notifications
+os: osx
+rvm: 2.2.2
+
 before_install: sudo gem install cocoapods --pre
+
