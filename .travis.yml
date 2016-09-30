@@ -6,5 +6,7 @@ rvm: 2.2.2
 
 before_install:
  - sudo gem install cocoapods --pre
- - pod repo update
+ - pod repo add https://github.com/nklizhe/NSBundle-LoginItem/blob/master/NSBundle%2BLoginItem.podspec
+ - pod repo add https://github.com/Alamofire/Alamofire/blob/master/Alamofire.podspec
+ - pod repo add https://github.com/SwiftyJSON/SwiftyJSON/blob/master/SwiftyJSON.podspec
 
