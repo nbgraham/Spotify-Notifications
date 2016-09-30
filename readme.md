@@ -3,8 +3,8 @@
 ## Spotify Notifications
 
 _Note: The project is currently being rewritten from scratch in Swift.
-Development is taking place on the `master` branch. To build the 0.5.1
-(Objective-C) release, checkout the `0.5.X` branch._
+Development is taking place on the `swift-dev` branch. To build the 0.5.1
+(Objective-C) release, checkout the `master` branch._
 
 ### 0.5.1 Feature Parity
 
