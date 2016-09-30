@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,113 +674,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-yF-QKE">
-                                <rect key="frame" x="18" y="233" width="119" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Notification Sound" id="oRI-r1-DyA">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton identifier="playSoundOnNotification" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uoW-kz-pwH">
-                                <rect key="frame" x="237" y="229" width="226" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="r4h-xL-jCv">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="rAB-Li-2Cl">
-                                        <items>
-                                            <menuItem title="Enabled" id="lMW-cU-Bdu">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Disabled" id="PSl-6Y-5gA">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="Flq-EZ-1nO"/>
-                                </connections>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vH-yZ-2Hy">
-                                <rect key="frame" x="18" y="208" width="143" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Embed Album Artwork" id="ZHm-oZ-NII">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton identifier="embedAlbumArtwork" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ub6-UU-y3w">
-                                <rect key="frame" x="237" y="203" width="226" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="dsC-r8-Qwo">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="QS4-uZ-a4l">
-                                        <items>
-                                            <menuItem title="Enabled" id="Pqn-5M-WTU"/>
-                                            <menuItem title="Disabled" id="yZ4-7I-XJw"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="yk7-aO-zgG"/>
-                                </connections>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhx-jC-lJq">
-                                <rect key="frame" x="18" y="183" width="206" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Disable When Spotify Has Focus" id="aNM-gu-qld">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBh-5D-Aj9">
-                                <rect key="frame" x="18" y="158" width="107" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Launch on Login" id="qCf-HC-5Hf">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton identifier="disableWhenSpotifyHasFocus" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHb-Mp-QRr">
-                                <rect key="frame" x="237" y="178" width="226" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Enabled" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dqf-D8-Y7y" id="KEG-wk-5yM">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="g2M-tD-C01">
-                                        <items>
-                                            <menuItem title="Enabled" state="on" id="dqf-D8-Y7y"/>
-                                            <menuItem title="Disabled" id="1fs-Mb-jef"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="v6v-zV-POc"/>
-                                </connections>
-                            </popUpButton>
-                            <popUpButton identifier="launchOnLogin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46d-Oi-GwP">
-                                <rect key="frame" x="237" y="153" width="226" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="QSv-2F-Irf">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="r01-eY-9Xy">
-                                        <items>
-                                            <menuItem title="Enabled" id="3gs-gU-mQh"/>
-                                            <menuItem title="Disabled" id="ldf-BE-3wK"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="4dj-ur-Y4a"/>
-                                </connections>
-                            </popUpButton>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTo-tb-TIa">
+                                <rect key="frame" x="20" y="149" width="199" height="101"/>
+                                <subviews>
+                                    <button identifier="playSoundOnNotification" translatesAutoresizingMaskIntoConstraints="NO" id="GAG-jX-OcJ">
+                                        <rect key="frame" x="-2" y="85" width="135" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Notification Sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KQX-Bu-dEj">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="q6q-9A-ihR"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="embedAlbumArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="mRD-wu-Ruz">
+                                        <rect key="frame" x="-2" y="56" width="158" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Embed Album Artwork" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cNm-eZ-AEN">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="cVF-PE-LrL"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="disableWhenSpotifyHasFocus" translatesAutoresizingMaskIntoConstraints="NO" id="Yvg-rH-Ops">
+                                        <rect key="frame" x="-2" y="27" width="203" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Hide When Spotify Has Focus" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pf7-DF-bOf">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="ofu-Tz-DWr"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="launchOnLogin" translatesAutoresizingMaskIntoConstraints="NO" id="fTl-rZ-ghc">
+                                        <rect key="frame" x="-2" y="-2" width="124" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Launch On Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Y2-Cr-hYo">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="PreferenceSet:" target="XfG-lQ-9wD" id="sQS-dL-VpR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="LTo-tb-TIa" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="iVG-Bh-OkI"/>
+                            <constraint firstItem="LTo-tb-TIa" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="jkQ-1o-9H0"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="NotificationSoundButton" destination="uoW-kz-pwH" id="oyH-pj-gZn"/>
-                        <outlet property="embedAlbumArtworkButton" destination="ub6-UU-y3w" id="z5u-kH-W8d"/>
-                        <outlet property="launchOnLoginButton" destination="46d-Oi-GwP" id="UXa-72-RSf"/>
-                        <outlet property="spotifyHasFocusButton" destination="NHb-Mp-QRr" id="QBx-c7-xhn"/>
+                        <outlet property="embedAlbumArtworkCheckBox" destination="mRD-wu-Ruz" id="o1d-sZ-dge"/>
+                        <outlet property="hideSpotifyHasFocusCheckBox" destination="Yvg-rH-Ops" id="pU4-ea-q1h"/>
+                        <outlet property="launchOnLoginCheckBox" destination="fTl-rZ-ghc" id="sN0-VB-oSe"/>
+                        <outlet property="notificationSoundCheckBox" destination="GAG-jX-OcJ" id="kdq-xm-2BD"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

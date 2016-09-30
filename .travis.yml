@@ -1,3 +1,2 @@
 language: objective-c
-xcode_project: Spotify Notifications.xcodeproj
-xcode_scheme: Spotify Notifications
+script: xcodebuild -workspace TravisExample.xcworkspace -scheme TravisExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
